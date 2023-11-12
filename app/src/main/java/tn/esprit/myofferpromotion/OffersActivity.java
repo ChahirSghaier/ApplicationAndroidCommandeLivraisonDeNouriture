@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +39,16 @@ public class OffersActivity extends AppCompatActivity {
         // Configuration de l'adaptateur
         offersAdapter = new OffersAdapter(offersList);
         recyclerView.setAdapter(offersAdapter);
+        // Ajout d'un écouteur de clic au RecyclerView
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                // Répondez au clic sur l'élément de la liste ici
+                // Par exemple, ouvrez une nouvelle activité ou affichez plus de détails
+                Offer clickedOffer = offersList.get(position);
+                Toast.makeText(OffersActivity.this, "Clic sur l'offre : " + clickedOffer.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        }));
     }
 
     // Méthode pour ajouter des données d'exemple à la base de données (à faire une seule fois)

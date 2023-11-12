@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,16 @@ import tn.esprit.myofferpromotion.entity.Offer;
             holder.textViewTitle.setText(offer.getTitle());
             holder.textViewDescription.setText(offer.getDescription());
             holder.textViewPrice.setText(String.valueOf(offer.getPrice()));
+            // Ajoutez un gestionnaire de clic pour l'élément d'offre ici
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Répondez au clic sur l'élément ici
+                    // Par exemple, ouvrez une nouvelle activité ou affichez plus de détails
+                    Toast.makeText(v.getContext(), "Clic sur l'offre : " + offer.getTitle(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
 
         @Override
@@ -55,6 +66,7 @@ import tn.esprit.myofferpromotion.entity.Offer;
                 textViewTitle = itemView.findViewById(R.id.textViewTitle);
                 textViewDescription = itemView.findViewById(R.id.textViewDescription);
                 textViewPrice = itemView.findViewById(R.id.textViewPrice);
+
             }
         }
     }
