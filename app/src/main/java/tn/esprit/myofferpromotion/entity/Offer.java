@@ -11,10 +11,19 @@ public class Offer {
     private Date dateDebut;
     private Date dateFin;
     private String description;
-    private Long price;
+    private Double price;
     private Long price2;
     private List<Product> productList;
     private Boolean isActive;
+
+
+    public Offer(Long id, String title, String description, Double price) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+    }
+
     public Long getId() {
         return id;
     }
@@ -53,11 +62,11 @@ public class Offer {
         this.description = description;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

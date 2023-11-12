@@ -41,7 +41,7 @@ import tn.esprit.myofferpromotion.entity.Offer;
 
         @Override
         public int getItemCount() {
-            return offersList.size();
+            return offersList != null ? offersList.size() : 0;
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -52,9 +52,9 @@ import tn.esprit.myofferpromotion.entity.Offer;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                textViewTitle = (TextView) itemView.findViewById(R.id.textViewTitle);
-                textViewDescription = (TextView) itemView.findViewById(R.id.textViewDescription);
-                textViewPrice = (TextView) itemView.findViewById(R.id.textViewPrice);
+                textViewTitle = itemView.findViewById(R.id.textViewTitle);
+                textViewDescription = itemView.findViewById(R.id.textViewDescription);
+                textViewPrice = itemView.findViewById(R.id.textViewPrice);
             }
         }
     }
