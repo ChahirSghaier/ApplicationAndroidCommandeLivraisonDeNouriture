@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import tn.esprit.myofferpromotion.entity.Offer;
 
-public class OfferDetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

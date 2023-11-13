@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -49,12 +50,19 @@ public class OffersActivity extends AppCompatActivity {
                 Offer clickedOffer = offersList.get(position);
                 Toast.makeText(OffersActivity.this, "Clic sur l'offre : " + clickedOffer.getTitle(), Toast.LENGTH_SHORT).show();
                 // Passer à la nouvelle activité avec les détails de l'offre cliqué
-                Intent intent = new Intent(OffersActivity.this, OfferDetailsActivity.class);
+                Intent intent = new Intent(OffersActivity.this, DetailsActivity.class);
                 intent.putExtra("clickedOffer",clickedOffer);
                 startActivity(intent);
             }
         }));
 
+        Button buttonAddOffer = findViewById(R.id.buttonAddOffer);
+
+        buttonAddOffer.setOnClickListener(view -> {
+            // Lancer l'activité d'ajout d'offres
+            Intent intent = new Intent(OffersActivity.this, AddOfferActivity.class);
+            startActivity(intent);
+        });
     }
 
     // Méthode pour ajouter des données d'exemple à la base de données (à faire une seule fois)
