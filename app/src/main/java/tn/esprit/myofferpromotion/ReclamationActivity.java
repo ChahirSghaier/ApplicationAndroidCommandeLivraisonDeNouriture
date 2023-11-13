@@ -21,7 +21,7 @@ import tn.esprit.myofferpromotion.dao.DataBaseReclamation;
 
 import tn.esprit.myofferpromotion.entity.Reclamation;
 
-public class ReclamationActivity extends AppCompatActivity {
+public class ReclamationActivity extends AppCompatActivity implements  ReclamationAdapter.OnItemClickListener{
 
     private DataBaseReclamation dataBaseReclamation;
     @Override
@@ -31,7 +31,7 @@ public class ReclamationActivity extends AppCompatActivity {
 
         // Initialiser le gestionnaire de base de données
         dataBaseReclamation = new DataBaseReclamation(this);
-         addSampleData();
+         //addSampleData();
         // Configuration du RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerViewOffers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -40,7 +40,7 @@ public class ReclamationActivity extends AppCompatActivity {
         List<Reclamation> reclamationsList = getOffersData();
 
         // Configuration de l'adaptateur
-        ReclamationAdapter reclamationAdapter = new ReclamationAdapter(reclamationsList);
+        ReclamationAdapter reclamationAdapter = new ReclamationAdapter(reclamationsList, this);
         recyclerView.setAdapter(reclamationAdapter);
         // Ajout d'un écouteur de clic au RecyclerView
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
@@ -59,7 +59,7 @@ public class ReclamationActivity extends AppCompatActivity {
 
         buttonAddOffer.setOnClickListener(view -> {
             // Lancer l'activité d'ajout d'offres
-            Intent intent = new Intent(ReclamationActivity.this, AddOfferActivity.class);
+            Intent intent = new Intent(ReclamationActivity.this, AddReclamationActivity.class);
             startActivity(intent);
         });
     }
@@ -129,7 +129,7 @@ public class ReclamationActivity extends AppCompatActivity {
 
 
     public void onModifierClick(Reclamation reclamation) {
-        Intent intent = new Intent(this, AddOfferActivity.class);
+        Intent intent = new Intent(this, AddReclamationActivity.class);
         intent.putExtra("mode", "modify"); // You can use this extra to indicate the modification mode
         intent.putExtra("offre", reclamation);
         startActivity(intent);

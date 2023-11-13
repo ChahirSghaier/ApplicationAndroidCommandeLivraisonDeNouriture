@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataBaseReclamation extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "pimobile";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     // Table et colonnes
     public static final String TABLE_RECLAMATION = "reclamation";
     public static final String COLUMN_ID = "id";
