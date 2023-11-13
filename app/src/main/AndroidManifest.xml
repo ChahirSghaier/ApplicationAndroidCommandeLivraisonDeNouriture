@@ -25,6 +25,9 @@
 
         <activity android:name="tn.esprit.myofferpromotion.AddOfferActivity">
         </activity>
+        <activity android:name=".UpdateOfferActivity">
+
+        </activity>
     </application>
 
 </manifest>

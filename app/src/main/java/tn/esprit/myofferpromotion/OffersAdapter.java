@@ -57,6 +57,7 @@ import tn.esprit.myofferpromotion.entity.Offer;
                     Toast.makeText(v.getContext(), "Clic sur l'offre : " + offer.getTitle(), Toast.LENGTH_SHORT).show();
                 }
             });
+
             holder.btnModifier.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -26,16 +26,6 @@ public class AddOfferActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_offer);
-        Intent intent = getIntent();
-
-        if (intent != null) {
-            String mode = intent.getStringExtra("mode");
-            Offer offre = intent.getParcelableExtra("offre");
-
-            if (mode != null && mode.equals("modify") && offre != null) {
-                 updateUiWithOfferData(offre);
-            }
-        }
 
         editTextTitle = findViewById(R.id.editTextTitle);
         editTextDescription = findViewById(R.id.editTextDescription);
@@ -59,27 +49,6 @@ public class AddOfferActivity extends AppCompatActivity {
         });
     }
 
-    private void updateUiWithOfferData(Offer offre) {
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(DatabaseHelper.COLUMN_TITLE, offre.getTitle());
-        values.put(DatabaseHelper.COLUMN_DESCRIPTION, offre.getDescription());
-        values.put(DatabaseHelper.COLUMN_PRICE, offre.getPrice());
-        // Specify the whereClause to update the specific row
-        String whereClause = DatabaseHelper.COLUMN_ID + " = ?";
-        String[] whereArgs = { String.valueOf(offre.getId()) };
-        long rowsUpdated = db.update(DatabaseHelper.TABLE_OFFERS, values,whereClause,whereArgs);
-
-        if (rowsUpdated > 0) {
-            // Successful update
-            Toast.makeText(this, "Offre mise à jour avec succès!", Toast.LENGTH_SHORT).show();
-        } else {
-            // Update failed
-            Toast.makeText(this, "Erreur lors de la mise à jour de l'offre.", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     private void addOffer(String title, String description, double price) {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
