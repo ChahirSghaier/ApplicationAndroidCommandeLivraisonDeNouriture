@@ -16,7 +16,15 @@ public class Offer implements Serializable {
     private Long price2;
     private List<Product> productList;
     private Boolean isActive;
+    private String imageUrl;
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public Offer(Long id, String title, String description, Double price) {
         this.id = id;

@@ -9,7 +9,10 @@ android:paddingLeft="16dp"
 android:paddingTop="16dp"
 android:paddingRight="16dp"
 android:paddingBottom="16dp"
-tools:context=".OffersActivity">
+tools:context=".OffersActivity"
+    android:background="#CCCCCC"
+
+    >
 
 <TextView
     android:id="@+id/textViewTitle"

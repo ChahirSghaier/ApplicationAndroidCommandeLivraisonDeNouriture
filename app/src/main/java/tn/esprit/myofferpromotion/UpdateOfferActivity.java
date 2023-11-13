@@ -81,6 +81,7 @@ public class UpdateOfferActivity extends AppCompatActivity {
             // Update failed
             Toast.makeText(this, "Erreur lors de la mise à jour de l'offre.", Toast.LENGTH_SHORT).show();
         }
+
     }
 
 }

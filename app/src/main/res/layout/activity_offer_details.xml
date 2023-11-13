@@ -8,7 +8,9 @@
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
-    tools:context=".DetailsActivity">
+    tools:context=".DetailsActivity"
+    android:background="#CCCCCC"
+    >
 
     <FrameLayout
         android:id="@+id/fragmentContainer"

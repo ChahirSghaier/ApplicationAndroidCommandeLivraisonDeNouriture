@@ -1,5 +1,8 @@
 package tn.esprit.myofferpromotion;
 
+
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +58,9 @@ import tn.esprit.myofferpromotion.entity.Offer;
                     // Répondez au clic sur l'élément ici
                     // Par exemple, ouvrez une nouvelle activité ou affichez plus de détails
                     Toast.makeText(v.getContext(), "Clic sur l'offre : " + offer.getTitle(), Toast.LENGTH_SHORT).show();
-                }
+                    Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+                    intent.putExtra("clickedOffer",offer);
+                    v.getContext().startActivity(intent);                }
             });
 
             holder.btnModifier.setOnClickListener(new View.OnClickListener() {

@@ -12,14 +12,15 @@
         android:theme="@style/Theme.MyOfferPromotion"
         tools:targetApi="31">
         <activity
-            android:name=".OffersActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".OffersActivity">
+        </activity>
         <activity android:name="tn.esprit.myofferpromotion.DetailsActivity">
         </activity>
 

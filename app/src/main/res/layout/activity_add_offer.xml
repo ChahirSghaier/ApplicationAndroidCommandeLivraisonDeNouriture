@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#CCCCCC" >
 
     <EditText
         android:id="@+id/editTextTitle"
@@ -36,7 +37,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextPrice"
-        android:layout_marginTop="16dp"
-        android:text="Ajouter l'offre"/>
+        android:layout_marginTop="227dp"
+        android:text="Ajouter l'offre" />
+
+    <Button
+        android:id="@+id/upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="262dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="250dp"
+        android:text="Upload" />
 
 </RelativeLayout>

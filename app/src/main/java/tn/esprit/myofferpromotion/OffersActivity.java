@@ -39,12 +39,12 @@ public class OffersActivity extends AppCompatActivity implements OffersAdapter.O
         // Configuration de l'adaptateur
         OffersAdapter offersAdapter = new OffersAdapter(offersList,this);
         recyclerView.setAdapter(offersAdapter);
+
         // Ajout d'un écouteur de clic au RecyclerView
     /*    recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 // Répondez au clic sur l'élément de la liste ici
-                // Par exemple, ouvrez une nouvelle activité ou affichez plus de détails
                 Offer clickedOffer = offersList.get(position);
 
                 Toast.makeText(OffersActivity.this, "Clic sur l'offre : " + clickedOffer.getTitle() , Toast.LENGTH_SHORT).show();
@@ -135,6 +135,7 @@ public class OffersActivity extends AppCompatActivity implements OffersAdapter.O
         intent.putExtra("mode", "modify"); // You can use this extra to indicate the modification mode
         intent.putExtra("offre", offre);
         startActivity(intent);
+
     }
 
     @Override
