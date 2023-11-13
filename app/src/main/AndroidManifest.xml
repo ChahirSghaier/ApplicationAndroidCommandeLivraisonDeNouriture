@@ -12,19 +12,23 @@
         android:theme="@style/Theme.MyOfferPromotion"
         tools:targetApi="31">
         <activity
-            android:name=".OffersActivity"
+            android:name=".AddReclamationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReclamationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".OffersActivity"
+            android:exported="false"/>
 
-        <activity android:name="tn.esprit.myofferpromotion.DetailsActivity">
-        </activity>
 
-        <activity android:name="tn.esprit.myofferpromotion.AddOfferActivity">
-        </activity>
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".AddOfferActivity" />
     </application>
 
 </manifest>
