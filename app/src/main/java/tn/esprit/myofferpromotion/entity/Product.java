@@ -1,6 +1,8 @@
 package tn.esprit.myofferpromotion.entity;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private Long id;
     private String nom;
     private Long prix;

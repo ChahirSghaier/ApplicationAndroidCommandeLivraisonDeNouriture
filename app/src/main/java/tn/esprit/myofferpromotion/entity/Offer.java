@@ -1,10 +1,11 @@
 package tn.esprit.myofferpromotion.entity;
 
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Offer {
+public class Offer implements Serializable {
 
     private Long id ;
     private String title ;

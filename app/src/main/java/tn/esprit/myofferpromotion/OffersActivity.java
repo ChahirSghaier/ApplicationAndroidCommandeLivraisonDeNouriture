@@ -2,6 +2,7 @@ package tn.esprit.myofferpromotion;
 
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -47,14 +48,18 @@ public class OffersActivity extends AppCompatActivity {
                 // Par exemple, ouvrez une nouvelle activité ou affichez plus de détails
                 Offer clickedOffer = offersList.get(position);
                 Toast.makeText(OffersActivity.this, "Clic sur l'offre : " + clickedOffer.getTitle(), Toast.LENGTH_SHORT).show();
+                // Passer à la nouvelle activité avec les détails de l'offre cliqué
+                Intent intent = new Intent(OffersActivity.this, OfferDetailsActivity.class);
+                intent.putExtra("clickedOffer",clickedOffer);
+                startActivity(intent);
             }
         }));
+
     }
 
     // Méthode pour ajouter des données d'exemple à la base de données (à faire une seule fois)
     private void addSampleData() {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_TITLE, "Offre 1");
         values.put(DatabaseHelper.COLUMN_DESCRIPTION, "Description de l'offre 1");
