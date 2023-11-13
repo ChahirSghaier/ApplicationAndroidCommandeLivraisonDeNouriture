@@ -3,6 +3,7 @@ package tn.esprit.myofferpromotion;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,9 +17,18 @@ import tn.esprit.myofferpromotion.entity.Offer;
     public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.ViewHolder> {
 
         private List<Offer> offersList;
+        private OnItemClickListener onItemClickListener;
 
-        public OffersAdapter(List<Offer> offersList) {
+        // Define an interface to handle item clicks
+        public interface OnItemClickListener {
+            void onModifierClick(Offer offre);
+            void onSupprimerClick(Offer offre);
+        }
+
+        public OffersAdapter(List<Offer> offersList,OnItemClickListener onItemClickListener) {
             this.offersList = offersList;
+            this.onItemClickListener = onItemClickListener;
+
         }
 
         @NonNull
@@ -47,7 +57,24 @@ import tn.esprit.myofferpromotion.entity.Offer;
                     Toast.makeText(v.getContext(), "Clic sur l'offre : " + offer.getTitle(), Toast.LENGTH_SHORT).show();
                 }
             });
+            holder.btnModifier.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Action à effectuer lors du clic sur le bouton Modifier
+                    onItemClickListener.onModifierClick(offer);
 
+                }
+            });
+
+            // Bouton Supprimer
+            holder.btnSupprimer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Action à effectuer lors du clic sur le bouton Supprimer
+                    onItemClickListener.onSupprimerClick(offer);
+
+                }
+            });
         }
 
         @Override
@@ -60,12 +87,15 @@ import tn.esprit.myofferpromotion.entity.Offer;
             public TextView textViewTitle;
             public TextView textViewDescription;
             public TextView textViewPrice;
-
+            Button btnModifier;
+            Button btnSupprimer;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 textViewTitle = itemView.findViewById(R.id.textViewTitle);
                 textViewDescription = itemView.findViewById(R.id.textViewDescription);
                 textViewPrice = itemView.findViewById(R.id.textViewPrice);
+                btnModifier = itemView.findViewById(R.id.btnModifier);
+                btnSupprimer = itemView.findViewById(R.id.btnSupprimer);
 
             }
         }

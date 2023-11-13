@@ -19,9 +19,7 @@ import java.util.List;
 import tn.esprit.myofferpromotion.dao.DatabaseHelper;
 import tn.esprit.myofferpromotion.entity.Offer;
 
-public class OffersActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private OffersAdapter offersAdapter;
+public class OffersActivity extends AppCompatActivity implements OffersAdapter.OnItemClickListener {
     private DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +30,14 @@ public class OffersActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         // addSampleData();
         // Configuration du RecyclerView
-        recyclerView = findViewById(R.id.recyclerViewOffers);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewOffers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // TODO: Initialisez votre liste d'offres depuis la base de données ou d'autres sources.
         List<Offer> offersList = getOffersData();
 
         // Configuration de l'adaptateur
-        offersAdapter = new OffersAdapter(offersList);
+        OffersAdapter offersAdapter = new OffersAdapter(offersList,this);
         recyclerView.setAdapter(offersAdapter);
         // Ajout d'un écouteur de clic au RecyclerView
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
@@ -48,7 +46,7 @@ public class OffersActivity extends AppCompatActivity {
                 // Répondez au clic sur l'élément de la liste ici
                 // Par exemple, ouvrez une nouvelle activité ou affichez plus de détails
                 Offer clickedOffer = offersList.get(position);
-                Toast.makeText(OffersActivity.this, "Clic sur l'offre : " + clickedOffer.getTitle(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(OffersActivity.this, "Clic sur l'offre : " + clickedOffer.getTitle() , Toast.LENGTH_SHORT).show();
                 // Passer à la nouvelle activité avec les détails de l'offre cliqué
                 Intent intent = new Intent(OffersActivity.this, DetailsActivity.class);
                 intent.putExtra("clickedOffer",clickedOffer);
@@ -128,5 +126,44 @@ public class OffersActivity extends AppCompatActivity {
         cursor.close();
 
         return offersList;
+    }
+
+    @Override
+    public void onModifierClick(Offer offre) {
+        Intent intent = new Intent(this, AddOfferActivity.class);
+        intent.putExtra("mode", "modify"); // You can use this extra to indicate the modification mode
+        intent.putExtra("offre", offre);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onSupprimerClick(Offer offre) {
+        // Handle the 'Supprimer' button click
+
+        long offerIdToDelete = offre.getId();
+        // Call a method to delete the offer from the database or perform other deletion logic
+        deleteOfferFromDatabase(offerIdToDelete);
+    }
+
+    // Method to delete the offer from the database
+    private void deleteOfferFromDatabase(long offerId) {
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // Specify the whereClause to delete the specific row
+        String whereClause = DatabaseHelper.COLUMN_ID + " = ?";
+        String[] whereArgs = { String.valueOf(offerId) };
+
+        // Use the delete method with the whereClause and whereArgs
+        int rowsDeleted = db.delete(DatabaseHelper.TABLE_OFFERS, whereClause, whereArgs);
+
+        if (rowsDeleted > 0) {
+            // Successful deletion
+            Toast.makeText(this, "Offre supprimée avec succès!", Toast.LENGTH_SHORT).show();
+            // You might want to refresh the RecyclerView or update the UI here
+        } else {
+            // Deletion failed
+            Toast.makeText(this, "Erreur lors de la suppression de l'offre.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -27,4 +27,21 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_marginTop="4dp"/>
+
+    <!-- Bouton Modifier -->
+
+    <!-- Bouton Supprimer -->
+
+    <Button
+        android:id="@+id/btnModifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modifier" />
+
+    <Button
+        android:id="@+id/btnSupprimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supprimer" />
+
 </LinearLayout>
