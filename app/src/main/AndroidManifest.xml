@@ -7,24 +7,29 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyOfferPromotion"
+        android:theme="@style/Theme.FoodApp"
         tools:targetApi="31">
         <activity
-            android:name=".OffersActivity"
+            android:name=".ui.WalletActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AddProductWalletActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="tn.esprit.myofferpromotion.DetailsActivity">
-        </activity>
-
-        <activity android:name="tn.esprit.myofferpromotion.AddOfferActivity">
-        </activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
